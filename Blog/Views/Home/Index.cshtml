@@ -1,0 +1,46 @@
+﻿@using Blog.Models;
+@model List<PostViewModel>
+@{
+    ViewBag.Title = "主页";
+}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('../../Content/clean_blog/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Bug收割机的博客</h1>
+                    <span class="subheading">本博客用于发布ASP.NET相关学习分享。</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (var post in Model)
+            {
+                <div class="post-preview">
+                    <a href="/Post/get/@post.ID">
+                        <h2 class="post-title">
+                            @post.Title
+                        </h2>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#">@post.Author</a>
+                        @post.CreateDate
+                    </p>
+                </div>
+                <hr>
+            }
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">更多 &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>

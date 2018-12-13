@@ -1,0 +1,46 @@
+﻿@using Blog.Models;
+@model PostListViewModel
+@{
+    ViewBag.Title = "文章列表";
+}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('../../Content/clean_blog/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Bug收割机的博客</h1>
+                    <span class="subheading">文章列表。</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="post-preview">
+                    <a href="/Post/get/@post.ID">
+                        <h2 class="post-title">
+                            @post.Title
+                        </h2>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#">@post.Author</a>
+                        @post.CreateDate
+                    </p>
+                </div>
+                <hr>
+            }
+            <!-- Pager -->
+            <p>显示当前第 @Model.PageCount 页，共有 @Model.Pages 页（记录总数：@Model.Count）。</p>
+        </div>
+    </div>
+</div>
+

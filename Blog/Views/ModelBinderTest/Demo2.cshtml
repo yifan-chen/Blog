@@ -1,0 +1,27 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Demo2</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Demo2", "ModelBinderTest", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.DisplayFor(m => m)
+            <input name="field" value="test123" />
+            <button type="submit" >提交</button>
+        }
+        <form id="form2" action="Demo2?field=123123">
+            <input name="field" value="test123" />
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</body>
+</html>

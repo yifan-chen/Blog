@@ -1,0 +1,30 @@
+﻿@using Blog.Areas.Admin.Models;
+@model PostMaintainViewModel
+@{
+    ViewBag.Title = "更新文章";
+}
+@{
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="~/Scripts/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="~/Scripts/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "post-form" }))
+{
+    <label>标题</label>
+    <h2>@Html.TextBoxFor(m => m.Title)</h2>
+    <label>内容</label>
+    @*<p>@Html.TextAreaFor(m => m.Content)</p>*@
+    <!-- 加载编辑器的容器 -->
+    <script id="container" name="Content" type="text/plain">
+        @Html.Raw(@Model.Content)
+    </script>
+
+    <button type="submit">提交</button>
+}
